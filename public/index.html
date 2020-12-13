@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>PATIENT_REPORTS</title>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+		
+<style>
+h1 {text-align:center;}
+input[type="radio"] {
+    margin-left:10px;
+}
+</style>
+</head>
+    <body>
+        <h1 align=ce>PATIENT_REPORTS </h1>
+        <script src="bundle.js" ></script>
+         <fieldset>
+		 <legend>Enter your details </legend>
+         <br>
+		<form>
+		 <table style="margin:10px;">
+		 <tr>
+		 <td><label for="id1">ID:</label></td>
+		 <td><input type="text" id="id1" name="id1" placeholder="Enter ID"></td>
+		 </tr>
+		 <tr>
+		 <td><label class="header">ECG:</label></td>
+		 <td> <input id="image1" type="file" name="ECG" placeholder="ECG" required="" capture></td>
+		 </tr>
+		 
+		 <tr>
+		 <td><label class="header">MRI:</label></td>
+		 <td> <input id="image2" type="file" name="MRI" placeholder="MRI" required="" capture></td>
+		 </tr>
+		 
+		 	 
+		 <tr>
+		 <td><label class="header">XRAY:</label></td>
+		 <td> <input id="image3" type="file" name="XRAY" placeholder="XRAY" required="" capture></td>
+		 </tr>
+		 
+		  	 
+		 <tr>
+		 <td><label class="header">CARDIO:</label></td>
+		 <td> <input id="image4" type="file" name="CARDIO" placeholder="CARDIO" required="" capture></td>
+		 </tr>
+		 <tr>
+		 <td><label class="header">BLOOD:</label></td>
+		 <td> <input id="image5" type="file" name="BLOOD" placeholder="BLOOD" required="" capture></td>
+		 </tr>
+		 <tr>
+		 <td><label class="header">COVID:</label></td>
+		 <td> <input id="image6" type="file" name="COVID" placeholder="COVID" required="" capture></td>
+		 </tr>
+		 <tr>
+		 <td><label class="header">ENDOSCOPE:</label></td>
+	     <td> <input id="image7" type="file" name="ENDOSCOPE" placeholder="ENDOSCOPE" required="" capture></td>
+		 </tr>
+		 <tr>
+		 <td><input type="button" id="submitBtnIndex" value="Set Details"></td>
+		 </tr>
+		
+		 </table>
+		 <h4> Transaction Id: <a href=""><div id="result"></div></a></h4> 
+		 <h4> Patient ID: <a href=""><div id="result4"></div><a/a></h4>
+		 <a href="verify.html"><b>Verify your Details</b> </a>
+	</form>
+	</fieldset>
+	
+	</body>
+	
+</html>

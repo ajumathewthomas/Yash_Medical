@@ -1,2 +1,1 @@
-# Yash_Medical
-Medical Proj
+# Medical-Record-_Proj
