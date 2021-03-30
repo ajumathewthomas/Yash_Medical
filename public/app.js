@@ -1,7 +1,7 @@
-const IPFS = require('ipfs');
 const uint8ArrayConcat = require('uint8arrays/concat')
 const all = require('it-all')
 
+const ipfs = require('./ipfs-node');
 
 
 var node;
@@ -10,6 +10,7 @@ var account;
 const token = require('./abis/file.json');
 
 window.addEventListener('load', async () => {
+  start();
 
 
   if (typeof window.ethereum !== 'undefined') {
@@ -65,19 +66,18 @@ function set_details() {
   });
 }
 function show_details() {
-  var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+  var myContract = new web3.eth.Contract(token, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
   var s_id = document.getElementById("ssn_id").value;
   var fileDetails = myContract.methods.getStudentDetails(s_id).call(function (err, fileDetails) {
-
     if (err) { console.log(err); }
     if (fileDetails) {
-      document.getElementById("get_ECG").innerHTML = fileDetails[0];
-      document.getElementById("get_MRI").innerHTML = fileDetails[1];
-      document.getElementById("get_XRAY").innerHTML = fileDetails[2];
-      document.getElementById("get_CARDIO").innerHTML = fileDetails[3];
-      document.getElementById("get_BLOOD").innerHTML = fileDetails[4];
-      document.getElementById("get_COVID").innerHTML = fileDetails[5];
-      document.getElementById("get_ENDOSCOPE").innerHTML = fileDetails[6];
+      document.getElementById("get_ECG").innerHTML = getFile(fileDetails[0], 'get_ECG');
+      document.getElementById("get_MRI").innerHTML = getFile(fileDetails[1], 'get_MRI');
+      document.getElementById("get_XRAY").innerHTML = getFile(fileDetails[2], 'get_XRAY');
+      document.getElementById("get_CARDIO").innerHTML = getFile(fileDetails[3], 'get_CARDIO');
+      document.getElementById("get_BLOOD").innerHTML = getFile(fileDetails[4], 'get_BLOOD');
+      document.getElementById("get_COVID").innerHTML = getFile(fileDetails[5], 'get_COVID');
+      document.getElementById("get_ENDOSCOPE").innerHTML = getFile(fileDetails[6], 'get_ENDOSCOPE');
     }
   });
 
@@ -125,7 +125,7 @@ async function catchFile(e, id) {
 
 
 async function start() {
-  node = await IPFS.create();
+  node = await ipfs.main();
   if (document.getElementById('image1')) {
     document.getElementById("image1").addEventListener("change", (e) => catchFile(e, 'file1'));
     document.getElementById("image2").addEventListener("change", (e) => catchFile(e, 'file2'));
@@ -141,4 +141,3 @@ async function start() {
     document.getElementById('getDetailsBtn').addEventListener("click", (e) => show_details());
   }
 }
-start();
